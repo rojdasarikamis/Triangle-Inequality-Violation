@@ -1,35 +1,34 @@
 package edu.bim313;
 
+import java.util.List;
+
+import static edu.bim313.TurkishNetwork.cities;
+import static edu.bim313.TurkishNetwork.distance;
+
+
 public class Triangle {
 
-    private int a;
-    private int b;
-    private int c;
-    private String aCity;
-    private String bCity;
-    private String cCity;
+    int a, b, c;
 
-    public Triangle(int  a, int b, int c, String aCity, String bCity, String cCity)
-    {
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        this.aCity = aCity;
-        this.bCity = bCity;
-        this.cCity = cCity;
+    public Triangle(List<Integer> list) {
+        if(list.size()!=3){
+            throw new IllegalArgumentException("A traingle must edges");
+        }
 
+        a= list.get(0);
+        b= list.get(1);
+        c= list.get(2);
     }
 
-    public boolean isCorrect()
-    {
-        if(a + b > c && a + c > b && b + c > a)
-            return true;
+    @Override
+    public String toString() {
 
-        return false;
+
+        return  cities[a]+ " " +cities[b]+" "+cities[c];
     }
 
-    public String toString()
-    {
-        return aCity + " " + bCity + " " + cCity;
+    public boolean checkInEquality() {
+
+        return distance[b][a] + distance[b][c] >= distance[a][c];
     }
 }
