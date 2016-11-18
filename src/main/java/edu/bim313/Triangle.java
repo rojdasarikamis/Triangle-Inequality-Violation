@@ -5,7 +5,6 @@ import java.util.List;
 import static edu.bim313.TurkishNetwork.cities;
 import static edu.bim313.TurkishNetwork.distance;
 
-
 public class Triangle {
 
     int a, b, c;
@@ -29,6 +28,6 @@ public class Triangle {
 
     public boolean checkInEquality() {
 
-        return distance[b][a] + distance[b][c] >= distance[a][c];
+        return ((distance[b][a] + distance[b][c] <= distance[a][c])||(distance[b][a] + distance[a][c] <= distance[b][c])||(distance[a][c] + distance[b][c] <= distance[b][a]));
     }
 }
